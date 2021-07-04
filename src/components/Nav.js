@@ -26,7 +26,7 @@ export const Nav = ({ categoriesArray }) => {
             {!isHovered ?
                 <h2>show categories</h2>
                 : categoriesArray.map((each, index) => {
-                    return each !== 'cAtegoRy' && (
+                    return each !== 'category' && (
                         <Link className={!pageOut ? '' : 'page-out'} onClick={() => setPageOut(true)} key={index + 'cat'} to={`/category/${each}`}>
                             {each}
                         </Link>
