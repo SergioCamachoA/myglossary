@@ -15,12 +15,20 @@ export const MainPage = ({ setConceptObject }) => {
   ]
   const [categoriesArray] = useState(initialArray)
 
+  let recentObject = {
+    topic: 'topic',
+    description: 'description',
+    category: 'category',
+    mainLink: 'mainLink',
+    secLink: 'secLink',
+  }
+
   const mostOf = [
-    "example most zero",
-    "example most one",
-    "example most one",
-    "example most one",
-    "example most one",
+    recentObject.topic,
+    recentObject.topic,
+    recentObject.topic,
+    recentObject.topic,
+    recentObject.topic,
   ]
   const [currentExampleList, setCurrentExampleList] = useState(mostOf)
 
@@ -33,10 +41,7 @@ export const MainPage = ({ setConceptObject }) => {
             currentExampleList={currentExampleList}
             whichMost="most recent"
           />
-          <Most
-            currentExampleList={currentExampleList}
-            whichMost="most viewed"
-          />
+          <h1 className='most-unclicked'>most viewed</h1>
         </div>
         <Form
           setConceptObject={setConceptObject}

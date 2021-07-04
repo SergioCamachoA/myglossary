@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 export const Most = ({ whichMost, currentExampleList }) => {
 
     const [isClicked, setIsClicked] = useState(false)
+    console.log(currentExampleList);
     return (
         <div>
             {!isClicked
@@ -17,9 +18,8 @@ export const Most = ({ whichMost, currentExampleList }) => {
                 >
                     {currentExampleList.map((each, index) => {
                         return (
-
-                            <Link to={`/${each}`}>
-                                <h6 key={index + 'most'}>{each}</h6>
+                            <Link key={index + 'most'} to={`/${each}`}>
+                                <h6>{each}</h6>
                             </Link>
                         )
                     })}
