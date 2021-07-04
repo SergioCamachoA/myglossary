@@ -5,11 +5,11 @@ export const Concept = ({ conceptObject }) => {
     // const { concept } = useParams()
     return (
         <div>
-            {/* <h1>{concept}</h1> */}
             <h1>{conceptObject.topic}</h1>
-            <h1>{conceptObject.category}</h1>
+            <h1>{conceptObject.description}</h1>
             <h1>{conceptObject.mainLink}</h1>
-            <p>{conceptObject.description}</p>
+            <h1>{conceptObject.secLink}</h1>
+            <h1>{conceptObject.category}</h1>
 
             <Link to='/'>Regrese uno</Link>
         </div>

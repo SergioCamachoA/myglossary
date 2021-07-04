@@ -9,8 +9,16 @@ import { Concept } from "./pages/Concept";
 // import { Recent } from "./pages/Recent";
 // import { MostViewed } from "./pages/MostViewed";
 
+let recentObject = {
+  topic: 'topic',
+  description: 'description',
+  category: 'category',
+  mainLink: 'mainlink',
+  secLink: 'seclink',
+}
+
 function App() {
-  const [conceptObject, setConceptObject] = useState({ topic: 'still testing' })
+  const [conceptObject, setConceptObject] = useState(recentObject)
   return (
     <Router>
       <Switch>
