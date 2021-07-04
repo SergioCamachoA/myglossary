@@ -7,14 +7,14 @@
 
 body {
   color: #d39935;
-  background-color: greenyellow;
+  background-color: #e8e4e6;
   font-family: "Major Mono Display", monospace;
 }
 
 nav {
   width: 5vw;
   height: 100vh;
-  background-color: greenyellow;
+  background-color: #e8e4e6;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -156,7 +156,7 @@ nav:hover {
 
 .first-section .list-of-most a {
   text-decoration: none;
-  color: greenyellow;
+  color: #e8e4e6;
   -webkit-transition: 300ms;
   transition: 300ms;
 }
@@ -177,7 +177,7 @@ nav:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: greenyellow;
+  background-color: #e8e4e6;
   -webkit-perspective: 1000px;
           perspective: 1000px;
 }
@@ -229,7 +229,7 @@ nav:hover {
   width: 25vw;
   height: 6vh;
   font-size: medium;
-  background-color: greenyellow;
+  background-color: #e8e4e6;
   border-radius: 1rem;
   padding: 2vh;
   margin-top: 3vh;
@@ -247,7 +247,7 @@ nav:hover {
   -webkit-box-shadow: none;
           box-shadow: none;
   background-color: #004643;
-  color: greenyellow;
+  color: #e8e4e6;
   font-size: 2vh;
 }
 
