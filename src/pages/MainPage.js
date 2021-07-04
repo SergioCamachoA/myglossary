@@ -13,7 +13,7 @@ export const MainPage = ({ setConceptObject }) => {
     "css",
     "math and number",
   ]
-  const [categoriesArray, setCategoriesArray] = useState(initialArray)
+  const [categoriesArray] = useState(initialArray)
 
   const mostOf = [
     "example most zero",
