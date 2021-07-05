@@ -45,8 +45,8 @@ nav {
 }
 
 .show a {
-  width: 25%;
-  height: 25%;
+  width: 13vw;
+  height: 13vw;
   margin: 0% 10%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -58,7 +58,7 @@ nav {
       -ms-flex-align: center;
           align-items: center;
   text-align: center;
-  font-size: 5vh;
+  font-size: 3vw;
   color: #d39935;
   text-decoration: none;
   -webkit-transition: 3s;
@@ -70,7 +70,6 @@ nav {
 .show a:hover {
   background-color: #abd1c6;
   color: #001e1d;
-  padding-bottom: 10vh;
 }
 
 nav:hover {
@@ -109,7 +108,7 @@ nav:hover {
       -ms-flex-align: center;
           align-items: center;
   background-color: #004643;
-  font-size: 7vh;
+  font-size: 4vw;
   text-align: right;
   padding-left: 5vw;
   color: #d39935;
@@ -285,6 +284,7 @@ nav:hover {
 
 .section-one button:focus {
   outline: none;
+  background-color: #d39935;
 }
 
 .section-one input:focus,
@@ -302,7 +302,7 @@ nav:hover {
 
 .section-one button:hover {
   cursor: pointer;
-  background-color: #f9bc60;
+  background-color: #d39935;
   color: #001e1d;
 }
 
@@ -319,15 +319,71 @@ nav:hover {
   z-index: 1;
 }
 
-.category {
+.concept-page,
+.category-page {
+  height: 100vh;
+  width: 100vw;
+  background-color: #004643;
+}
+
+.concept-page h1,
+.concept-page a,
+.category-page h1,
+.category-page a {
+  color: #e8e4e6;
+  text-decoration: none;
+  font-size: 3vw;
+}
+
+.concept-page h1,
+.category-page h1 {
+  font-size: 3vw;
+}
+
+.concept-page a:hover,
+.category-page a:hover {
+  color: #d39935;
+}
+
+.concept-details,
+.category-details {
+  height: 80vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.category-specs {
+  width: 80vw;
+  overflow-y: scroll;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.category-specs a {
+  font-size: 1vw;
+  margin: 5px 2vw;
+}
+
+.category-specs::-webkit-scrollbar {
+  display: none;
 }
 /*# sourceMappingURL=NewGloss.css.map */

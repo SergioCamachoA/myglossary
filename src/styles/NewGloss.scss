@@ -62,15 +62,15 @@ nav {
   //   align-items: center;
 
   a {
-    width: 25%;
-    height: 25%;
+    width: 13vw;
+    height: 13vw;
     margin: 0% 10%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     // background-color: hotpink;
     text-align: center;
-    font-size: 5vh;
+    font-size: 3vw;
     color: #d39935;
     text-decoration: none;
     transition: 3s;
@@ -80,7 +80,7 @@ nav {
   a:hover {
     background-color: $color-three;
     color: $color-two;
-    padding-bottom: 10vh;
+    // padding-bottom: 10vh;
   }
 }
 
@@ -106,7 +106,7 @@ nav:hover {
   background-color: $color-four;
   //   background-image: url("../myGreen.png");
   //   background: url("https://wallpapercave.com/wp/wp9136492.jpg");
-  font-size: 7vh;
+  font-size: 4vw;
   text-align: right;
   padding-left: 5vw;
   color: $color-one;
@@ -216,6 +216,7 @@ nav:hover {
   }
   button:focus {
     outline: none;
+    background-color: $color-one;
   }
   input:focus,
   textarea:focus,
@@ -231,7 +232,7 @@ nav:hover {
   }
   button:hover {
     cursor: pointer;
-    background-color: $color-five;
+    background-color: $color-one;
     color: $color-two;
   }
 
@@ -248,8 +249,50 @@ nav:hover {
   }
 }
 
-.category {
+//CONCEPT and CATEGORY DETAILS
+.concept-page,
+.category-page {
+  height: 100vh;
+  width: 100vw;
+  background-color: $color-four;
+  h1,
+  a {
+    color: $background;
+    text-decoration: none;
+    font-size: 3vw;
+  }
+  h1 {
+    font-size: 3vw;
+  }
+  a:hover {
+    color: $color-one;
+  }
+}
+.concept-details,
+.category-details {
+  // background-color: greenyellow;
+  height: 80vh;
+  // width: 50vw;
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+}
+
+//category alone
+.category-specs {
+  // height: 10vh;
+  width: 80vw;
+  overflow-y: scroll;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  a {
+    font-size: 1vw;
+    margin: 5px 2vw;
+  }
+}
+.category-specs::-webkit-scrollbar {
+  display: none;
 }
