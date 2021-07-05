@@ -14,9 +14,11 @@ export const Most = ({ whichMost, updateRecent }) => {
             }
             return list
         }
+        if (list !== null) {
 
-        let mostRecent = changeOrder(list.slice(-5))
-        setRecentsList(mostRecent)
+            let mostRecent = changeOrder(list.slice(-5))
+            setRecentsList(mostRecent)
+        }
     }, [updateRecent])
 
     const [isClicked, setIsClicked] = useState(false)
