@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom"
 import React from "react"
 
-export function SingleCategorie() {
+export function SingleCategory() {
   let { name } = useParams()
   return (
     <div className="category">
