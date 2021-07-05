@@ -19,7 +19,6 @@ export const Form = ({ categoriesArray, setUpdateRecent, updateRecent }) => {
     }
 
     const handleMouseMove = (e) => {
-        // console.log(e.pageX, e.pageY);
         let axisX = (window.innerWidth * 0.75 - e.pageX) / 20
         let axisY = (window.innerHeight / 2 - e.pageY) / 20
 
@@ -84,17 +83,18 @@ export const Form = ({ categoriesArray, setUpdateRecent, updateRecent }) => {
         }
         return {
             form,
+            setForm,
             handlerOnChange,
         }
     }
-
-    const { form, handlerOnChange } = useForm({
+    const emptyForm = {
         topic: '',
         description: '',
         category: '',
         mainLink: '',
         secLink: '',
-    })
+    }
+    const { form, setForm, handlerOnChange } = useForm(emptyForm)
     const [filledOut, setFilledOut] = useState([])
 
     function handleFormSubmit() {
@@ -103,16 +103,20 @@ export const Form = ({ categoriesArray, setUpdateRecent, updateRecent }) => {
             let tempArray = []
             for (const property in form) {
                 let missingInput = document.getElementById(property)
-
+                console.log(property);
+                if (property === 'category') {
+                    if (form[property] === 'category') {
+                        form[property] = ''
+                        console.log('testeo duro del hack ñeron');
+                    }
+                }
 
                 if (form[property] === '') {
                     missingInput.style.backgroundColor = '#abd1c6'
                     missingInput.style.border = '1px solid #004643'
                 } else {
                     tempArray.push('item-added')
-                    console.log(tempArray);
                     setFilledOut(tempArray)
-                    console.log(filledOut);
                     missingInput.style.backgroundColor = ''
                     missingInput.style.border = ''
                 }
@@ -122,17 +126,25 @@ export const Form = ({ categoriesArray, setUpdateRecent, updateRecent }) => {
     }
 
     useEffect(() => {
+        const emptyFormEffect = {
+            topic: '',
+            description: '',
+            category: '',
+            mainLink: '',
+            secLink: '',
+        }
         if (filledOut.length === 5) {
 
             let storedArray = JSON.parse(localStorage.getItem('mainList'))
-            console.log(storedArray);
             if (storedArray === null) storedArray = []
             storedArray.push(form)
             localStorage.setItem('mainList', JSON.stringify(storedArray))
             setUpdateRecent(!updateRecent)
             setFilledOut([])
+            setForm(emptyFormEffect)
+
         }
-    }, [filledOut, form, setUpdateRecent, updateRecent])
+    }, [filledOut, form, setUpdateRecent, updateRecent, setForm])
 
     return (
         <>
