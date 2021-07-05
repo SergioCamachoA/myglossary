@@ -3,7 +3,7 @@ import { Nav } from "../components/Nav"
 import { Most } from "../components/Most"
 import { Form } from "../components/Form"
 
-export const MainPage = ({ setConceptObject }) => {
+export const MainPage = () => {
   const initialArray = [
     "category",
     "data structures",
@@ -14,23 +14,9 @@ export const MainPage = ({ setConceptObject }) => {
     "math and number",
   ]
   const [categoriesArray] = useState(initialArray)
+  const [updateRecent, setUpdateRecent] = useState('')
 
-  let recentObject = {
-    topic: 'topic',
-    description: 'description',
-    category: 'category',
-    mainLink: 'mainLink',
-    secLink: 'secLink',
-  }
 
-  const mostOf = [
-    recentObject.topic,
-    recentObject.topic,
-    recentObject.topic,
-    recentObject.topic,
-    recentObject.topic,
-  ]
-  const [currentExampleList, setCurrentExampleList] = useState(mostOf)
 
   return (
     <div>
@@ -38,15 +24,14 @@ export const MainPage = ({ setConceptObject }) => {
       <div className="main-section">
         <div className="first-section">
           <Most
-            currentExampleList={currentExampleList}
             whichMost="most recent"
+            updateRecent={updateRecent}
           />
           <h1 className='most-unclicked'>most viewed</h1>
         </div>
         <Form
-          setConceptObject={setConceptObject}
-          currentExampleList={currentExampleList}
-          setCurrentExampleList={setCurrentExampleList}
+          updateRecent={updateRecent}
+          setUpdateRecent={setUpdateRecent}
           categoriesArray={categoriesArray}
         />
       </div>

@@ -1,8 +1,10 @@
-import React, { useState, useRef } from "react"
+import React, { useState, useRef, useEffect } from "react"
 // import "../styles/App.css"
+// import { ArrayConcepts } from "./ArrayConcepts";
 
 
-export const Form = ({ categoriesArray, currentExampleList, setCurrentExampleList, setConceptObject }) => {
+
+export const Form = ({ categoriesArray, setUpdateRecent, updateRecent }) => {
     const [active3D, setActive3D] = useState(true)
     const [form3D, setForm3D] = useState()
     const [input3D, setInput3D] = useState()
@@ -66,14 +68,6 @@ export const Form = ({ categoriesArray, currentExampleList, setCurrentExampleLis
         setForm3D({ ...form3D, transition: 'none' })
     }
 
-    function handleFormSubmit() {
-        let tempArray = currentExampleList
-        tempArray.shift()
-        // setCurrentExampleList([...tempArray, `added ${Math.floor(Math.random() * 1000)}`])
-        setCurrentExampleList([...tempArray, form.topic])
-        setConceptObject(form)
-    }
-
     function useForm(values = {}) {
         const [form, setForm] = useState(values)
 
@@ -101,8 +95,45 @@ export const Form = ({ categoriesArray, currentExampleList, setCurrentExampleLis
         mainLink: '',
         secLink: '',
     })
+    const [filledOut, setFilledOut] = useState([])
 
-    // const [catDropDown, setCatDropDown] = useState('initialState')
+    function handleFormSubmit() {
+        function checkAll() {
+
+            let tempArray = []
+            for (const property in form) {
+                let missingInput = document.getElementById(property)
+
+
+                if (form[property] === '') {
+                    missingInput.style.backgroundColor = '#abd1c6'
+                    missingInput.style.border = '1px solid #004643'
+                } else {
+                    tempArray.push('item-added')
+                    console.log(tempArray);
+                    setFilledOut(tempArray)
+                    console.log(filledOut);
+                    missingInput.style.backgroundColor = ''
+                    missingInput.style.border = ''
+                }
+            }
+        }
+        checkAll()
+    }
+
+    useEffect(() => {
+        if (filledOut.length === 5) {
+
+            let storedArray = JSON.parse(localStorage.getItem('mainList'))
+            console.log(storedArray);
+            if (storedArray === null) storedArray = []
+            storedArray.push(form)
+            localStorage.setItem('mainList', JSON.stringify(storedArray))
+            setUpdateRecent(!updateRecent)
+            setFilledOut([])
+        }
+    }, [filledOut, form, setUpdateRecent, updateRecent])
+
     return (
         <>
             <section
@@ -123,6 +154,7 @@ export const Form = ({ categoriesArray, currentExampleList, setCurrentExampleLis
                     <input
                         onChange={handlerOnChange}
                         name='topic'
+                        id='topic'
                         style={input3D}
                         type="text"
                         placeholder="topic"
@@ -141,7 +173,7 @@ export const Form = ({ categoriesArray, currentExampleList, setCurrentExampleLis
                         onChange={handlerOnChange}
                         style={input3D}
                         name="category"
-                        id="categories"
+                        id="category"
                         type='select'
                     >
 
@@ -158,6 +190,7 @@ export const Form = ({ categoriesArray, currentExampleList, setCurrentExampleLis
                         type="text"
                         placeholder="main link"
                         name='mainLink'
+                        id='mainLink'
                         value={form.mainLink} />
                     <input
                         onChange={handlerOnChange}
@@ -165,6 +198,7 @@ export const Form = ({ categoriesArray, currentExampleList, setCurrentExampleLis
                         type="text"
                         placeholder="secondary links"
                         name='secLink'
+                        id='secLink'
                         value={form.secLink} />
                     <button
                         ref={formBtn}
