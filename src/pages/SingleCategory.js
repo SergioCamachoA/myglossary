@@ -6,7 +6,7 @@ export function SingleCategory() {
 
   const conceptsArray = JSON.parse(localStorage.getItem("mainList"))
 
-  let filteredArray
+  let filteredArray = []
   if (conceptsArray !== null) filteredArray = conceptsArray.filter((each) => each.category === name)
   return (
     <div className="category-page">

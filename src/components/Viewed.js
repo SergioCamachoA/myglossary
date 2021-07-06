@@ -4,8 +4,8 @@ import { Link } from "react-router-dom"
 export const Viewed = () => {
   const [isClicked, setIsClicked] = useState(false)
   const list = JSON.parse(localStorage.getItem("mainList"))
-  console.log(list)
-  let viewsList
+  // console.log(list)
+  let viewsList = []
   if (list !== null) viewsList = list
   return (
     <div>
