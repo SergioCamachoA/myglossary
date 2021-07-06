@@ -5,8 +5,9 @@ export function SingleCategory() {
   const { name } = useParams()
 
   const conceptsArray = JSON.parse(localStorage.getItem("mainList"))
-  const filteredArray = conceptsArray.filter((each) => each.category === name)
 
+  let filteredArray
+  if (conceptsArray !== null) filteredArray = conceptsArray.filter((each) => each.category === name)
   return (
     <div className="category-page">
       <Link to="/">regrese uno</Link>

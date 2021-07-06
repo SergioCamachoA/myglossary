@@ -134,7 +134,8 @@ nav:hover {
   background-color: #001e1d;
 }
 
-.first-section .list-of-most {
+.first-section .list-of-most,
+.first-section .viewed-list {
   height: 35vh;
   width: 38vw;
   display: -webkit-box;
@@ -153,14 +154,16 @@ nav:hover {
   padding: 0 3%;
 }
 
-.first-section .list-of-most a {
+.first-section .list-of-most a,
+.first-section .viewed-list a {
   text-decoration: none;
   color: #e8e4e6;
   -webkit-transition: 300ms;
   transition: 300ms;
 }
 
-.first-section .list-of-most a:hover {
+.first-section .list-of-most a:hover,
+.first-section .viewed-list a:hover {
   color: #d39935;
 }
 

@@ -124,7 +124,8 @@ nav:hover {
   .most-unclicked:hover {
     background-color: $color-two;
   }
-  .list-of-most {
+  .list-of-most,
+  .viewed-list {
     height: 35vh;
     width: 38vw;
     display: flex;
