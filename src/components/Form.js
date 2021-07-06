@@ -103,11 +103,9 @@ export const Form = ({ categoriesArray, setUpdateRecent, updateRecent }) => {
             let tempArray = []
             for (const property in form) {
                 let missingInput = document.getElementById(property)
-                console.log(property);
                 if (property === 'category') {
                     if (form[property] === 'category') {
                         form[property] = ''
-                        console.log('testeo duro del hack ñeron');
                     }
                 }
 
