@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { Nav } from "../components/Nav"
 import { Most } from "../components/Most"
 import { Form } from "../components/Form"
+import { Viewed } from "../components/Viewed";
 
 export const MainPage = () => {
   const initialArray = [
@@ -27,7 +28,7 @@ export const MainPage = () => {
             whichMost="most recent"
             updateRecent={updateRecent}
           />
-          <h1 className='most-unclicked'>most viewed</h1>
+          <Viewed />
         </div>
         <Form
           updateRecent={updateRecent}
