@@ -4,7 +4,7 @@ import { handlerVisitCount } from '../helpers/handlerVisitCount'
 
 
 export const Most = ({ whichMost, updateRecent }) => {
-    const [isClicked, setIsClicked] = useState(false)
+    // const [isClicked, setIsClicked] = useState(false)
     const [recentsList, setRecentsList] = useState([])
     useEffect(() => {
         let list = JSON.parse(localStorage.getItem('mainList'))
@@ -27,27 +27,19 @@ export const Most = ({ whichMost, updateRecent }) => {
     }, [updateRecent])
 
     return (
-        <div>
-            {!isClicked
-                ? <h1
-                    className='most-unclicked'
-                    onClick={() => setIsClicked(true)}
-                >{whichMost}</h1>
-                : <div className='list-of-most'
-                    // className='most-unclicked'
-                    onClick={() => setIsClicked(false)}
-                >
-                    {recentsList !== null && recentsList.map((each) => {
-                        return (
-                            <Link
-                                onClick={() => handlerVisitCount(each.id)}
-                                key={each.id} to={`/${each.topic}`}>
-                                <h6>{each.topic}</h6>
-                            </Link>
-                        )
-                    })}
-                </div>
-            }
+        <div className='list-of-most'>
+            <h1 className='most-unclicked'>{whichMost}</h1>
+            <div className='listed'>
+                {recentsList !== null && recentsList.map((each) => {
+                    return (
+                        <Link
+                            onClick={() => handlerVisitCount(each.id)}
+                            key={each.id} to={`/${each.topic}`}>
+                            <h6>{each.topic}</h6>
+                        </Link>
+                    )
+                })}
+            </div>
         </div>
     )
 }

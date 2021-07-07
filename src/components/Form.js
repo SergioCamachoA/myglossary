@@ -1,8 +1,6 @@
 import React, { useState, useRef, useEffect } from "react"
-// import "../styles/App.css"
-// import { ArrayConcepts } from "./ArrayConcepts";
-
-
+import { useForm } from '../hooks/useForm'
+import { handlerFormSubmit } from '../helpers/handlerFormSubmit'
 
 export const Form = ({ categoriesArray, setUpdateRecent, updateRecent }) => {
     const [active3D, setActive3D] = useState(true)
@@ -67,26 +65,6 @@ export const Form = ({ categoriesArray, setUpdateRecent, updateRecent }) => {
         setForm3D({ ...form3D, transition: 'none' })
     }
 
-    function useForm(values = {}) {
-        const [form, setForm] = useState(values)
-
-        function handlerOnChange(e) {
-
-            const updatedForm = {
-                ...form,
-                [e.target.name]:
-                    e.target.type === 'select'
-                        ? e.target[e.target.selectedIndex]
-                        : e.target.value
-            }
-            setForm(updatedForm)
-        }
-        return {
-            form,
-            setForm,
-            handlerOnChange,
-        }
-    }
     const emptyForm = {
         topic: '',
         description: '',
@@ -96,28 +74,6 @@ export const Form = ({ categoriesArray, setUpdateRecent, updateRecent }) => {
     }
     const { form, setForm, handlerOnChange } = useForm(emptyForm)
     const [filledOut, setFilledOut] = useState([])
-
-    function handleFormSubmit() {
-        let tempArray = []
-        for (const property in form) {
-            let missingInput = document.getElementById(property)
-            if (property === 'category') {
-                if (form[property] === 'category') {
-                    form[property] = ''
-                }
-            }
-
-            if (form[property] === '') {
-                missingInput.style.backgroundColor = '#abd1c6'
-                missingInput.style.border = '1px solid #004643'
-            } else {
-                tempArray.push('item-added')
-                setFilledOut(tempArray)
-                missingInput.style.backgroundColor = ''
-                missingInput.style.border = ''
-            }
-        }
-    }
 
     useEffect(() => {
         const emptyFormEffect = {
@@ -148,80 +104,78 @@ export const Form = ({ categoriesArray, setUpdateRecent, updateRecent }) => {
     }, [filledOut, form, setUpdateRecent, updateRecent, setForm])
 
     return (
-        <>
-            <section
-                onMouseLeave={undo3D}
-                onMouseEnter={redo3D}
-                onMouseMove={handleMouseMove} className="section-one">
-                <form
-                    style={form3D}
-                    className="inner-form"
-                    onMouseEnter={undo3D}
-                    onMouseLeave={redo3D}
-                    onSubmit={handleForm}
+        <section
+            onMouseLeave={undo3D}
+            onMouseEnter={redo3D}
+            onMouseMove={handleMouseMove} className="section-one">
+            <form
+                style={form3D}
+                className="inner-form"
+                onMouseEnter={undo3D}
+                onMouseLeave={redo3D}
+                onSubmit={handleForm}
+            >
+                <h1 ref={title}>ADD A NEW CONCEPT</h1>
+                <h1 className="title-two" ref={titleTwo}>
+                    ADD A NEW CONCEPT
+                </h1>
+                <input
+                    onChange={handlerOnChange}
+                    name='topic'
+                    id='topic'
+                    style={input3D}
+                    type="text"
+                    placeholder="topic"
+                    value={form.topic} />
+                <textarea
+                    onChange={handlerOnChange}
+                    style={input3D}
+                    name="description"
+                    id="description"
+                    // cols=""
+                    // rows="10"
+                    placeholder="description"
+                    value={form.description}
+                ></textarea>
+                <select
+                    onChange={handlerOnChange}
+                    style={input3D}
+                    name="category"
+                    id="category"
+                    type='select'
                 >
-                    <h1 ref={title}>Add A new concept</h1>
-                    <h1 className="title-two" ref={titleTwo}>
-                        Add A new concept
-                    </h1>
-                    <input
-                        onChange={handlerOnChange}
-                        name='topic'
-                        id='topic'
-                        style={input3D}
-                        type="text"
-                        placeholder="topic"
-                        value={form.topic} />
-                    <textarea
-                        onChange={handlerOnChange}
-                        style={input3D}
-                        name="description"
-                        id="description"
-                        // cols=""
-                        // rows="10"
-                        placeholder="description"
-                        value={form.description}
-                    ></textarea>
-                    <select
-                        onChange={handlerOnChange}
-                        style={input3D}
-                        name="category"
-                        id="category"
-                        type='select'
-                    >
 
-                        {categoriesArray.map((each, index) => {
-                            return (<option
-                                // className='testing'
-                                name={each}
-                                key={index + 'dropdown'} >{each}</option>)
-                        })}
-                    </select>
-                    <input
-                        onChange={handlerOnChange}
-                        style={input3D}
-                        type="text"
-                        placeholder="main link"
-                        name='mainLink'
-                        id='mainLink'
-                        value={form.mainLink} />
-                    <input
-                        onChange={handlerOnChange}
-                        style={input3D}
-                        type="text"
-                        placeholder="secondary links"
-                        name='secLink'
-                        id='secLink'
-                        value={form.secLink} />
-                    <button
-                        ref={formBtn}
-                        onClick={handleFormSubmit}
-                    >
-                        add to myglossary
-                    </button>
-                    <button className="btn-two" ref={formBtnTwo}></button>
-                </form>
-            </section>
-        </>
+                    {categoriesArray.map((each, index) => {
+                        return (<option
+                            // className='testing'
+                            name={each}
+                            key={index + 'dropdown'} >{each}</option>)
+                    })}
+                </select>
+                <input
+                    onChange={handlerOnChange}
+                    style={input3D}
+                    type="text"
+                    placeholder="main link"
+                    name='mainLink'
+                    id='mainLink'
+                    value={form.mainLink} />
+                <input
+                    onChange={handlerOnChange}
+                    style={input3D}
+                    type="text"
+                    placeholder="secondary links"
+                    name='secLink'
+                    id='secLink'
+                    value={form.secLink} />
+                <button
+                    ref={formBtn}
+                    onClick={() => handlerFormSubmit(setFilledOut, form)}
+                >
+                    ADD TO GLOSSARY
+                </button>
+                <button className="btn-two" ref={formBtnTwo}></button>
+            </form>
+        </section>
     )
 }

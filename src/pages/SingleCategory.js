@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom"
 import React from "react"
+import { handlerVisitCount } from '../helpers/handlerVisitCount'
 
 export function SingleCategory() {
   const { name } = useParams()
@@ -14,9 +15,11 @@ export function SingleCategory() {
       <div className="category-details">
         <h1>{name}</h1>
         <div className="category-specs">
-          {filteredArray.map((each, index) => {
+          {filteredArray.map(each => {
             return (
-              <Link key={index} to={`/${each.topic}`}>
+              <Link
+                onClick={() => handlerVisitCount(each.id)}
+                key={each.id} to={`/${each.topic}`}>
                 <h2>{each.topic}</h2>
               </Link>
             )

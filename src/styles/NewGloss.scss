@@ -6,7 +6,11 @@ $color-five: #f9bc60;
 
 $background: #e8e4e6;
 
-$main-font: "Major Mono Display", monospace;
+// $main-font: "Bebas Neue", cursive;
+// $main-font: "Fjalla One", sans-serif;
+$main-font: "Josefin Sans", sans-serif;
+
+// $main-font: "Major Mono Display", monospace;
 
 @mixin flex-column {
   display: flex;
@@ -36,6 +40,12 @@ body {
   // width: 100vw;
   // overflow-x: hidden;
 }
+input,
+button,
+textarea,
+select {
+  font-family: $main-font;
+}
 
 nav {
   width: 5vw;
@@ -58,13 +68,15 @@ nav {
   text-orientation: sideways;
   writing-mode: horizontal-tb;
   flex-wrap: wrap;
-  //   justify-content: center;
-  //   align-items: center;
+  justify-content: space-around;
+  align-items: flex-end;
 
   a {
     width: 13vw;
+    // height: 30vh;
     height: 13vw;
     margin: 0% 10%;
+    margin-bottom: 5vh;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -73,7 +85,7 @@ nav {
     font-size: 3vw;
     color: #d39935;
     text-decoration: none;
-    transition: 3s;
+    transition: 2s;
     border-radius: 50rem;
     cursor: pointer;
   }
@@ -106,16 +118,66 @@ nav:hover {
   background-color: $color-four;
   //   background-image: url("../myGreen.png");
   //   background: url("https://wallpapercave.com/wp/wp9136492.jpg");
-  font-size: 4vw;
+  font-size: 2vw;
   text-align: right;
   padding-left: 5vw;
   color: $color-one;
+
+  //SEARCH
+  .search {
+    // background-color: greenyellow;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
+    align-items: center;
+    width: 90%;
+    height: 10vh;
+
+    input,
+    button {
+      border-radius: 1rem;
+      // height: 5vh;
+      margin: 0vh 1vw;
+      padding: 10px;
+      border: none;
+      transition: 0.5s;
+    }
+    input {
+      background-color: $color-two;
+      font-size: 3vh;
+      color: $color-one;
+      text-align: right;
+    }
+    button {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: $color-two;
+      cursor: pointer;
+      i {
+        color: $color-one;
+        font-size: 4vh;
+        transition: 0.5s;
+      }
+    }
+    button:hover {
+      background-color: $color-one;
+      i {
+        color: $color-two;
+      }
+    }
+    input:focus,
+    button:focus {
+      outline: none;
+    }
+  }
+
   h1 {
     display: flex;
     align-items: center;
     // background-color: greenyellow;
     width: 38vw;
-    height: 35vh;
+    height: 10vh;
     transition: 3s;
     border-radius: 1rem;
     padding: 0 5%;
@@ -126,13 +188,19 @@ nav:hover {
   }
   .list-of-most,
   .viewed-list {
-    height: 35vh;
+    height: 40vh;
     width: 38vw;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: flex-end;
     padding: 0 3%;
+    .listed {
+      display: flex;
+      height: 60%;
+      flex-direction: column;
+      justify-content: space-between;
+    }
     a {
       text-decoration: none;
       color: $background;
@@ -141,6 +209,9 @@ nav:hover {
     a:hover {
       color: $color-one;
     }
+  }
+  .list-of-most {
+    height: 30vh;
   }
 }
 
@@ -182,7 +253,6 @@ nav:hover {
     button,
     textarea,
     select {
-      font-family: $main-font;
       width: 25vw;
       height: 6vh;
       font-size: medium;

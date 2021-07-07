@@ -3,7 +3,6 @@ import { Link } from "react-router-dom"
 import { handlerVisitCount } from '../helpers/handlerVisitCount'
 
 export const Viewed = ({ updateRecent }) => {
-  const [isClicked, setIsClicked] = useState(false)
   const [viewsList, setViewsList] = useState([])
 
   useEffect(() => {
@@ -29,27 +28,23 @@ export const Viewed = ({ updateRecent }) => {
   // }
 
   return (
-    <div>
-      {!isClicked ? (
-        <div onClick={() => setIsClicked(true)}>
-          <h1 className="most-unclicked">most viewed</h1>
-        </div>
-      ) : (
-        <div className="viewed-list" onClick={() => setIsClicked(false)}>
-          {viewsList !== null &&
-            viewsList.map((each) => {
-              return (
-                <Link
-                  onClick={() => handlerVisitCount(each.id)}
-                  key={each.id}
-                  to={`/${each.topic}`}
-                >
-                  <h6>{each.topic}</h6>
-                </Link>
-              )
-            })}
-        </div>
-      )}
+    <div className="viewed-list">
+      <h1 className="most-unclicked">most viewed</h1>
+      <div className='listed'>
+        {viewsList !== null &&
+          viewsList.map((each) => {
+            return (
+              <Link
+                onClick={() => handlerVisitCount(each.id)}
+                key={each.id}
+                to={`/${each.topic}`}
+              >
+                <h6>{each.topic}</h6>
+              </Link>
+            )
+          })}
+      </div>
+
     </div>
   )
 }

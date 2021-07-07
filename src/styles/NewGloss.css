@@ -8,7 +8,14 @@
 body {
   color: #d39935;
   background-color: #e8e4e6;
-  font-family: "Major Mono Display", monospace;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+input,
+button,
+textarea,
+select {
+  font-family: "Josefin Sans", sans-serif;
 }
 
 nav {
@@ -42,12 +49,18 @@ nav {
           writing-mode: horizontal-tb;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
 }
 
 .show a {
   width: 13vw;
   height: 13vw;
   margin: 0% 10%;
+  margin-bottom: 5vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -61,8 +74,8 @@ nav {
   font-size: 3vw;
   color: #d39935;
   text-decoration: none;
-  -webkit-transition: 3s;
-  transition: 3s;
+  -webkit-transition: 2s;
+  transition: 2s;
   border-radius: 50rem;
   cursor: pointer;
 }
@@ -108,10 +121,73 @@ nav:hover {
       -ms-flex-align: center;
           align-items: center;
   background-color: #004643;
-  font-size: 4vw;
+  font-size: 2vw;
   text-align: right;
   padding-left: 5vw;
   color: #d39935;
+}
+
+.first-section .search {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 90%;
+  height: 10vh;
+}
+
+.first-section .search input,
+.first-section .search button {
+  border-radius: 1rem;
+  margin: 0vh 1vw;
+  padding: 10px;
+  border: none;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.first-section .search input {
+  background-color: #001e1d;
+  font-size: 3vh;
+  color: #d39935;
+  text-align: right;
+}
+
+.first-section .search button {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #001e1d;
+  cursor: pointer;
+}
+
+.first-section .search button i {
+  color: #d39935;
+  font-size: 4vh;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.first-section .search button:hover {
+  background-color: #d39935;
+}
+
+.first-section .search button:hover i {
+  color: #001e1d;
+}
+
+.first-section .search input:focus,
+.first-section .search button:focus {
+  outline: none;
 }
 
 .first-section h1 {
@@ -122,7 +198,7 @@ nav:hover {
       -ms-flex-align: center;
           align-items: center;
   width: 38vw;
-  height: 35vh;
+  height: 10vh;
   -webkit-transition: 3s;
   transition: 3s;
   border-radius: 1rem;
@@ -136,7 +212,7 @@ nav:hover {
 
 .first-section .list-of-most,
 .first-section .viewed-list {
-  height: 35vh;
+  height: 40vh;
   width: 38vw;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -145,13 +221,28 @@ nav:hover {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
   padding: 0 3%;
+}
+
+.first-section .list-of-most .listed,
+.first-section .viewed-list .listed {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 60%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 .first-section .list-of-most a,
@@ -165,6 +256,10 @@ nav:hover {
 .first-section .list-of-most a:hover,
 .first-section .viewed-list a:hover {
   color: #d39935;
+}
+
+.first-section .list-of-most {
+  height: 30vh;
 }
 
 .section-one {
@@ -227,7 +322,6 @@ nav:hover {
 .section-one form button,
 .section-one form textarea,
 .section-one form select {
-  font-family: "Major Mono Display", monospace;
   width: 25vw;
   height: 6vh;
   font-size: medium;
