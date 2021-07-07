@@ -22,7 +22,6 @@ export const Concept = () => {
                     <h1>ni pedo, regrese una casilla</h1>
                 </div>
                 : (<div className='concept-details'>
-                    <h1>{filteredConcept.id}</h1>
                     <h1>{filteredConcept.topic}</h1>
                     <h1>{filteredConcept.description}</h1>
                     <a rel='noreferrer' target='_blank' href={filteredConcept.mainLink}>main link</a>

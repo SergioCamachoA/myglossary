@@ -2,26 +2,28 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 export const Most = ({ whichMost, updateRecent }) => {
+    const [isClicked, setIsClicked] = useState(false)
     const [recentsList, setRecentsList] = useState([])
     useEffect(() => {
         let list = JSON.parse(localStorage.getItem('mainList'))
         function changeOrder(list) {
-            for (let i = 0; i <= (list.length / 2); i++) {
-                let changer
-                changer = list[i]
-                list[i] = list[list.length - (1 + i)]
-                list[list.length - (1 + i)] = changer
+            if (list.length === 2) {
+                let changer = list[0]
+                list[0] = list[1]
+                list[1] = changer
+            } else {
+                for (let i = 0; i <= (list.length / 2); i++) {
+                    let changer
+                    changer = list[i]
+                    list[i] = list[list.length - (1 + i)]
+                    list[list.length - (1 + i)] = changer
+                }
             }
             return list
         }
-        if (list !== null) {
-
-            let mostRecent = changeOrder(list.slice(-5))
-            setRecentsList(mostRecent)
-        }
+        if (list !== null) setRecentsList(changeOrder(list.slice(-5)))
     }, [updateRecent])
 
-    const [isClicked, setIsClicked] = useState(false)
     return (
         <div>
             {!isClicked
@@ -33,9 +35,9 @@ export const Most = ({ whichMost, updateRecent }) => {
                     // className='most-unclicked'
                     onClick={() => setIsClicked(false)}
                 >
-                    {recentsList !== null && recentsList.map((each, index) => {
+                    {recentsList !== null && recentsList.map((each) => {
                         return (
-                            <Link key={index + 'most'} to={`/${each.topic}`}>
+                            <Link key={each.id} to={`/${each.topic}`}>
                                 <h6>{each.topic}</h6>
                             </Link>
                         )

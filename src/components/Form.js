@@ -98,29 +98,25 @@ export const Form = ({ categoriesArray, setUpdateRecent, updateRecent }) => {
     const [filledOut, setFilledOut] = useState([])
 
     function handleFormSubmit() {
-        function checkAll() {
-
-            let tempArray = []
-            for (const property in form) {
-                let missingInput = document.getElementById(property)
-                if (property === 'category') {
-                    if (form[property] === 'category') {
-                        form[property] = ''
-                    }
-                }
-
-                if (form[property] === '') {
-                    missingInput.style.backgroundColor = '#abd1c6'
-                    missingInput.style.border = '1px solid #004643'
-                } else {
-                    tempArray.push('item-added')
-                    setFilledOut(tempArray)
-                    missingInput.style.backgroundColor = ''
-                    missingInput.style.border = ''
+        let tempArray = []
+        for (const property in form) {
+            let missingInput = document.getElementById(property)
+            if (property === 'category') {
+                if (form[property] === 'category') {
+                    form[property] = ''
                 }
             }
+
+            if (form[property] === '') {
+                missingInput.style.backgroundColor = '#abd1c6'
+                missingInput.style.border = '1px solid #004643'
+            } else {
+                tempArray.push('item-added')
+                setFilledOut(tempArray)
+                missingInput.style.backgroundColor = ''
+                missingInput.style.border = ''
+            }
         }
-        checkAll()
     }
 
     useEffect(() => {
@@ -131,11 +127,18 @@ export const Form = ({ categoriesArray, setUpdateRecent, updateRecent }) => {
             mainLink: '',
             secLink: '',
         }
-        if (filledOut.length === 5) {
 
+        if (filledOut.length === 5) {
             let storedArray = JSON.parse(localStorage.getItem('mainList'))
+            let idValue
+
             if (storedArray === null) storedArray = []
-            storedArray.push(form)
+            if (storedArray[storedArray.length - 1] !== undefined) { idValue = storedArray[storedArray.length - 1].id }
+            if (idValue === undefined) {
+                idValue = 1
+            } else { idValue += 1 }
+
+            storedArray.push({ ...form, views: 1, id: idValue })
             localStorage.setItem('mainList', JSON.stringify(storedArray))
             setUpdateRecent(!updateRecent)
             setFilledOut([])

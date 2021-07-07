@@ -1,29 +1,34 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 
-export const Viewed = () => {
+export const Viewed = ({ updateRecent }) => {
   const [isClicked, setIsClicked] = useState(false)
-  const list = JSON.parse(localStorage.getItem("mainList"))
-  console.log(list)
+  const [viewsList, setViewsList] = useState([])
 
-  function handlerVisitCount(topic) {
-    console.log("matematicas perronas")
-    console.log(topic)
-    console.log(list)
-    // let indexOfViewed = list.findIndex((each) => each.topic === topic)
-    let visitedTopic = list.find((each) => each.topic === topic)
-    if (visitedTopic.views === undefined) {
-      visitedTopic.views = 1
-    } else {
-      visitedTopic.views += 1
+  useEffect(() => {
+    let fetchedList = JSON.parse(localStorage.getItem("mainList"))
+
+    function changeOrder(list) {
+      list.sort((a, b) => b.views - a.views)
+
+      return list.slice(0, 7)
+      // return list
     }
-    localStorage.setItem("mainList", JSON.stringify(list))
-    // list.splice(indexOfViewed, 1, visitedTopic)
-    // console.log(list)
+
+    if (fetchedList !== null) {
+      setViewsList(changeOrder(fetchedList))
+    }
+  }, [updateRecent])
+
+  function handlerVisitCount(id) {
+    let fetchedList = JSON.parse(localStorage.getItem("mainList"))
+
+    let filtered = fetchedList.find((each) => each.id === id)
+    if (filtered !== undefined) filtered.views += 1
+    console.log(fetchedList)
+    localStorage.setItem("mainList", JSON.stringify(fetchedList))
   }
 
-  let viewsList = []
-  if (list !== null) viewsList = list
   return (
     <div>
       {!isClicked ? (
@@ -33,11 +38,11 @@ export const Viewed = () => {
       ) : (
         <div className="viewed-list" onClick={() => setIsClicked(false)}>
           {viewsList !== null &&
-            viewsList.map((each, index) => {
+            viewsList.map((each) => {
               return (
                 <Link
-                  onClick={() => handlerVisitCount(each.topic)}
-                  key={index + "most"}
+                  onClick={() => handlerVisitCount(each.id)}
+                  key={each.id}
                   to={`/${each.topic}`}
                 >
                   <h6>{each.topic}</h6>

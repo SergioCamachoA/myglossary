@@ -28,7 +28,9 @@ export const MainPage = () => {
             whichMost="most recent"
             updateRecent={updateRecent}
           />
-          <Viewed />
+          <Viewed
+            updateRecent={updateRecent}
+          />
         </div>
         <Form
           updateRecent={updateRecent}
