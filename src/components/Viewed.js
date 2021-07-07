@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
+import { handlerVisitCount } from '../helpers/handlerVisitCount'
 
 export const Viewed = ({ updateRecent }) => {
   const [isClicked, setIsClicked] = useState(false)
@@ -12,7 +13,6 @@ export const Viewed = ({ updateRecent }) => {
       list.sort((a, b) => b.views - a.views)
 
       return list.slice(0, 7)
-      // return list
     }
 
     if (fetchedList !== null) {
@@ -20,14 +20,13 @@ export const Viewed = ({ updateRecent }) => {
     }
   }, [updateRecent])
 
-  function handlerVisitCount(id) {
-    let fetchedList = JSON.parse(localStorage.getItem("mainList"))
+  // function handlerVisitCount(id) {
+  //   let fetchedList = JSON.parse(localStorage.getItem("mainList"))
 
-    let filtered = fetchedList.find((each) => each.id === id)
-    if (filtered !== undefined) filtered.views += 1
-    console.log(fetchedList)
-    localStorage.setItem("mainList", JSON.stringify(fetchedList))
-  }
+  //   let filtered = fetchedList.find((each) => each.id === id)
+  //   if (filtered !== undefined) filtered.views += 1
+  //   localStorage.setItem("mainList", JSON.stringify(fetchedList))
+  // }
 
   return (
     <div>

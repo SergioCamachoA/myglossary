@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { handlerVisitCount } from '../helpers/handlerVisitCount'
+
 
 export const Most = ({ whichMost, updateRecent }) => {
     const [isClicked, setIsClicked] = useState(false)
@@ -37,7 +39,9 @@ export const Most = ({ whichMost, updateRecent }) => {
                 >
                     {recentsList !== null && recentsList.map((each) => {
                         return (
-                            <Link key={each.id} to={`/${each.topic}`}>
+                            <Link
+                                onClick={() => handlerVisitCount(each.id)}
+                                key={each.id} to={`/${each.topic}`}>
                                 <h6>{each.topic}</h6>
                             </Link>
                         )
