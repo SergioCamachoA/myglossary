@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react"
 import { handlerVisitCount } from "../helpers/handlerVisitCount"
 import { Link } from 'react-router-dom'
 
-export const Search = () => {
+export const Search = ({ updateRecent }) => {
   const singleResult = useRef(null)
 
   const [searchInput, setSearchInput] = useState("")
@@ -12,7 +12,7 @@ export const Search = () => {
 
   useEffect(() => {
     setFetchedList(JSON.parse(localStorage.getItem("mainList")))
-  }, [])
+  }, [updateRecent])
 
   function handlerSearch(e) {
     e.preventDefault()

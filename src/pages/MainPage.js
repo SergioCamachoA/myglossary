@@ -23,7 +23,7 @@ export const MainPage = () => {
       <Nav categoriesArray={categoriesArray} />
       <div className="main-section">
         <div className="first-section">
-          <Search />
+          <Search updateRecent={updateRecent} />
           <Most whichMost="most recent" updateRecent={updateRecent} />
           <Viewed updateRecent={updateRecent} />
         </div>
