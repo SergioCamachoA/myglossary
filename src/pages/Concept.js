@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link, useParams } from "react-router-dom";
-// import { ArrayConcepts } from "../components/ArrayConcepts";
 
 export const Concept = () => {
     const { concept } = useParams()
@@ -26,7 +25,6 @@ export const Concept = () => {
                     <h1>{filteredConcept.description}</h1>
                     <a rel='noreferrer' target='_blank' href={filteredConcept.mainLink}>main link</a>
                     <a rel='noreferrer' target='_blank' href={filteredConcept.secLink}>secondary link</a>
-                    <h1>{filteredConcept.category}</h1>
                 </div>
                 )}
         </div>)

@@ -13,7 +13,7 @@ export const MainPage = () => {
     "arrays",
     "objects",
     "css",
-    "math and number",
+    "Math and Number",
   ]
   const [categoriesArray] = useState(initialArray)
   const [updateRecent, setUpdateRecent] = useState("")

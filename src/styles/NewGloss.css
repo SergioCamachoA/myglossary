@@ -18,6 +18,10 @@ select {
   font-family: "Josefin Sans", sans-serif;
 }
 
+a {
+  text-decoration: none;
+}
+
 nav {
   width: 5vw;
   height: 100vh;
@@ -106,7 +110,7 @@ nav:hover {
 }
 
 .first-section {
-  width: 50%;
+  width: 56%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -117,36 +121,33 @@ nav:hover {
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   background-color: #004643;
   font-size: 2vw;
-  text-align: right;
+  text-align: left;
   padding-left: 5vw;
   color: #d39935;
 }
 
-.first-section .search {
+.first-section form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: row-reverse;
-          flex-direction: row-reverse;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 90%;
+  width: 100%;
   height: 10vh;
 }
 
-.first-section .search input,
-.first-section .search button {
+.first-section form input,
+.first-section form button {
   border-radius: 1rem;
   margin: 0vh 1vw;
   padding: 10px;
@@ -155,14 +156,14 @@ nav:hover {
   transition: 0.5s;
 }
 
-.first-section .search input {
+.first-section form input {
   background-color: #001e1d;
   font-size: 3vh;
   color: #d39935;
   text-align: right;
 }
 
-.first-section .search button {
+.first-section form button {
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -170,50 +171,80 @@ nav:hover {
   cursor: pointer;
 }
 
-.first-section .search button i {
+.first-section form button i {
   color: #d39935;
   font-size: 4vh;
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 
-.first-section .search button:hover {
+.first-section form button:hover,
+.first-section form button:focus {
   background-color: #d39935;
 }
 
-.first-section .search button:hover i {
+.first-section form button:hover i,
+.first-section form button:focus i {
   color: #001e1d;
 }
 
-.first-section .search input:focus,
-.first-section .search button:focus {
+.first-section form input:focus,
+.first-section form button:focus {
   outline: none;
 }
 
-.first-section h1 {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 38vw;
-  height: 10vh;
-  -webkit-transition: 3s;
-  transition: 3s;
-  border-radius: 1rem;
-  padding: 0 5%;
-  cursor: pointer;
+.first-section .results {
+  position: absolute;
+  width: 20vw;
+  left: 34%;
+  bottom: 1vh;
+  text-align: right;
+  font-size: 3vw;
+  z-index: 2;
 }
 
-.first-section .most-unclicked:hover {
-  background-color: #001e1d;
+.first-section .results a {
+  color: #d39935;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+.first-section .results h6 {
+  margin: 1vh 0;
+}
+
+.first-section .results a:hover {
+  color: #e8e4e6;
+}
+
+.first-section .results-two {
+  position: absolute;
+  width: 20vw;
+  left: 34%;
+  top: 20vh;
+  text-align: right;
+  font-size: 3vw;
+  z-index: 2;
+}
+
+.first-section .results-two a {
+  color: #d39935;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+}
+
+.first-section .results-two h6 {
+  margin: 1vh 0;
+}
+
+.first-section .results-two a:hover {
+  color: #e8e4e6;
 }
 
 .first-section .list-of-most,
 .first-section .viewed-list {
-  height: 40vh;
-  width: 38vw;
+  height: 45vh;
+  width: 60%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -224,10 +255,11 @@ nav:hover {
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   padding: 0 3%;
+  margin-left: 1vw;
 }
 
 .first-section .list-of-most .listed,
@@ -264,7 +296,7 @@ nav:hover {
 
 .section-one {
   height: 100vh;
-  width: 50%;
+  width: 44%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

@@ -46,6 +46,9 @@ textarea,
 select {
   font-family: $main-font;
 }
+a {
+  text-decoration: none;
+}
 
 nav {
   width: 5vw;
@@ -110,27 +113,27 @@ nav:hover {
 }
 
 .first-section {
-  width: 50%;
+  width: 56%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  align-items: center;
+  // align-items: flex-;
   background-color: $color-four;
   //   background-image: url("../myGreen.png");
   //   background: url("https://wallpapercave.com/wp/wp9136492.jpg");
   font-size: 2vw;
-  text-align: right;
+  text-align: left;
   padding-left: 5vw;
   color: $color-one;
 
   //SEARCH
-  .search {
+  form {
     // background-color: greenyellow;
     display: flex;
-    flex-direction: row-reverse;
-    justify-content: flex-start;
+    flex-direction: row;
+    justify-content: flex-end;
     align-items: center;
-    width: 90%;
+    width: 100%;
     height: 10vh;
 
     input,
@@ -160,7 +163,8 @@ nav:hover {
         transition: 0.5s;
       }
     }
-    button:hover {
+    button:hover,
+    button:focus {
       background-color: $color-one;
       i {
         color: $color-two;
@@ -172,29 +176,57 @@ nav:hover {
     }
   }
 
-  h1 {
-    display: flex;
-    align-items: center;
+  .results {
     // background-color: greenyellow;
-    width: 38vw;
-    height: 10vh;
-    transition: 3s;
-    border-radius: 1rem;
-    padding: 0 5%;
-    cursor: pointer;
+    position: absolute;
+    width: 20vw;
+    left: 34%;
+    bottom: 1vh;
+    text-align: right;
+    font-size: 3vw;
+    z-index: 2;
+    a {
+      color: $color-one;
+      transition: 300ms;
+    }
+    h6 {
+      margin: 1vh 0;
+    }
+    a:hover {
+      color: $background;
+    }
   }
-  .most-unclicked:hover {
-    background-color: $color-two;
+  .results-two {
+    // background-color: greenyellow;
+    position: absolute;
+    width: 20vw;
+    left: 34%;
+    top: 20vh;
+    text-align: right;
+    font-size: 3vw;
+    z-index: 2;
+    a {
+      color: $color-one;
+      transition: 300ms;
+    }
+    h6 {
+      margin: 1vh 0;
+    }
+    a:hover {
+      color: $background;
+    }
   }
+
   .list-of-most,
   .viewed-list {
-    height: 40vh;
-    width: 38vw;
+    height: 45vh;
+    width: 60%;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    align-items: flex-end;
+    align-items: flex-start;
     padding: 0 3%;
+    margin-left: 1vw;
     .listed {
       display: flex;
       height: 60%;
@@ -218,7 +250,7 @@ nav:hover {
 //FORM PAGE
 .section-one {
   height: 100vh;
-  width: 50%;
+  width: 44%;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -4,7 +4,6 @@ import { handlerVisitCount } from '../helpers/handlerVisitCount'
 
 
 export const Most = ({ whichMost, updateRecent }) => {
-    // const [isClicked, setIsClicked] = useState(false)
     const [recentsList, setRecentsList] = useState([])
     useEffect(() => {
         let list = JSON.parse(localStorage.getItem('mainList'))
