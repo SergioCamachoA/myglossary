@@ -20,10 +20,12 @@ export const Search = ({ updateRecent }) => {
       setNoResults(false)
       setResults([])
     } else {
-
-      let results = fetchedList.filter((each) =>
-        each.topic.toLowerCase().includes(searchInput.toLowerCase())
-      )
+      let results = []
+      if (fetchedList !== null) {
+        results = fetchedList.filter((each) =>
+          each.topic.toLowerCase().includes(searchInput.toLowerCase())
+        )
+      }
 
       if (results.length === 0) {
         singleResult.current.className = 'results-two'
