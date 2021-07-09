@@ -47,6 +47,12 @@ export const Search = ({ updateRecent }) => {
     setSearchInput(e.target.value)
   }
 
+  // function fuckyou() {
+  //   setNoResults(false)
+
+  //   setResults([])
+  //   console.log('fcku');
+  // }
   return (
     <>
       <form onSubmit={handlerSearch}>

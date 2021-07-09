@@ -95,15 +95,11 @@ nav {
   a:hover {
     background-color: $color-three;
     color: $color-two;
-    // padding-bottom: 10vh;
   }
 }
 
 nav:hover {
-  width: 50vw;
-  align-items: flex-end;
-  //   writing-mode: horizontal-tb;
-  //   align-items: flex-end;
+  width: 56vw;
 }
 
 .main-section {
@@ -231,12 +227,13 @@ nav:hover {
       display: flex;
       height: 60%;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: center;
     }
     a {
       text-decoration: none;
       color: $background;
       transition: 300ms;
+      margin: 1vh 1vw;
     }
     a:hover {
       color: $color-one;
@@ -398,4 +395,165 @@ nav:hover {
 }
 .category-specs::-webkit-scrollbar {
   display: none;
+}
+
+//MOBILE MEDIA QUERY
+
+@media only screen and (max-width: 750px) {
+  body {
+    background-color: $color-four;
+    overflow-x: hidden;
+  }
+  .main-section {
+    flex-direction: column;
+  }
+
+  //CATEGORIES-----------------------------------------
+  nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    text-orientation: sideways;
+    writing-mode: horizontal-tb;
+    text-align: left;
+    font-size: 3vh;
+    color: $color-one;
+    transition: 0s;
+    background-color: $color-four;
+    height: 6vh;
+    width: 100vw;
+    z-index: 2;
+    bottom: 0vh;
+    h2 {
+      padding-top: 1vh;
+    }
+  }
+  nav:hover {
+    height: 35vh;
+    width: 100vw;
+  }
+  .show {
+    justify-content: center;
+    align-items: center;
+    a {
+      width: 100vw;
+      height: 6vw;
+      margin: 0;
+      // margin-bottom: 5vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // background-color: hotpink;
+      text-align: center;
+      font-size: 6vw;
+      color: #d39935;
+      text-decoration: none;
+      transition: 2s;
+      // border-radius: 50rem;
+      cursor: pointer;
+    }
+    a:hover {
+      background-color: $color-four;
+      color: $color-one;
+    }
+  }
+  //-------------------------------------------------------
+  //MOST VIEWED/RECENT SECTION
+  .first-section {
+    width: 100vw;
+    min-height: 50vh;
+    height: fit-content;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-left: 0;
+    padding-top: 6vh;
+    //-------------------------------------------------------
+    //SEARCH
+    form {
+      height: 6vh;
+      // background-color: greenyellow;
+      position: fixed;
+      top: 2vh;
+      // left: 0;
+      right: 3vw;
+      z-index: 2;
+      input {
+        height: 6vh;
+        width: 74vw;
+      }
+      button {
+        height: 7vh;
+        width: 7vh;
+        i {
+          font-size: 2vh;
+        }
+      }
+    }
+    //-------------------------------------------------------
+    //RESULTS
+    .results,
+    .results-two {
+      background-color: $color-two;
+      height: 0px;
+      height: fit-content;
+      width: 100%;
+      margin-top: 2vh;
+      top: 10vh;
+      left: 0;
+      font-size: 10vw;
+      text-align: center;
+    }
+    //-------------------------------------------------------
+    .list-of-most,
+    .viewed-list {
+      height: 80%;
+      width: 49vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      padding: 0;
+      margin-left: 0;
+      font-size: 5vw;
+      text-align: center;
+      .listed {
+        height: fit-content;
+        justify-content: center;
+        a {
+          margin: 1vh 1vw;
+        }
+      }
+    }
+  }
+  //-------------------------------------------------------
+  //ADD NEW SECTION
+  .section-one {
+    width: 100vw;
+    // height: 10vh;
+
+    form {
+      width: 100vw;
+      height: 100vh;
+      border-radius: 0;
+      justify-content: flex-start;
+      h1 {
+        // background-color: rgb(36, 41, 28);
+        margin: 10vh 0;
+        font-size: 8vw;
+        width: 50vw;
+      }
+      .title-two,
+      .btn-two {
+        display: none;
+      }
+      input,
+      select,
+      textarea,
+      button {
+        width: 70vw;
+      }
+    }
+  }
 }
